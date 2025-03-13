@@ -1,0 +1,30 @@
+node_modules/
+
+# Log files
+*.log
+
+# Environment files (ensure these don't get included)
+.env
+.env.local
+.env.*.local
+
+# Vite cache - You don’t want to include the local cache of your Vite build
+.vite/
+
+# Test coverage and artifacts
+coverage/
+
+# Build output directory
+/dist/
+
+# OS-specific files (macOS, Windows, etc.)
+.DS_Store
+Thumbs.db
+
+# Git metadata
+.git/
+.gitignore
+
+# NPM or Yarn lock files (if you are using a lock file from a different environment, like development or another machine)
+package-lock.json
+yarn.lock
