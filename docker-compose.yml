@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  service1:
+    build:
+      context: ./service_one
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./service_one:/app
+    environment:
+      - RAILS_ENV=development
+
+  service2:
+    build:
+      context: ./service_two
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./service_two:/app
+    environment:
+      - RAILS_ENV=development
+  gateway:
+    build:
+      context: ./gateway
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./gateway:/app
+    depends_on:
+      - service1
+      - service2
+    environment:
+      - RAILS_ENV=development
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - gateway
